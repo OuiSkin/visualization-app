@@ -14,8 +14,14 @@ import processing.serial.*;
 Serial myPort;
 
 Zone[] zones;
+int zoneIndex;
 int clickCounter;
-float value;
+float[] value = new float[6];
+float[] angleValue = new float[6];
+
+String inString;
+int viewtwoRun;
+PImage logo;
 
 void setup ()
 {
@@ -51,7 +57,10 @@ void setup ()
   */
   
   clickCounter = 0;
-  value = 0;
+  zoneIndex = 0;
+  inString = null;
+  int viewtwoRun =0;
+  logo = loadImage("logo.gif");
 
 }
 

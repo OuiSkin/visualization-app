@@ -1,26 +1,61 @@
 void viewTwo()
 {
   /*
-  * Draw empty zones
+  * Display empty zones
   */
-  background(255);
-
-  zones[0].display();
-  zones[1].display();
-  zones[2].display();
-  zones[3].display();
-  zones[4].display();
-  zones[5].display();
-  
-  zones[0].select();
+  if (viewtwoRun == 0)
+  {
+    background(255);
+    zones[0].display();
+    zones[1].display();
+    zones[2].display();
+    zones[3].display();
+    zones[4].display();
+    zones[5].display();
+  }
   
   /*
-  * Receives
+  * Select the zone
+  */  
+  
+  zones[zoneIndex].select();
+  
+//  /*
+//  * Key control
+//  */  
+//  
+//  if(keyPressed == true)
+//  {
+//    zoneIndex = (zoneIndex+1)%6;
+//    keyPressed = false;
+//  }
+
+
+  /*
+  * Receives data of selected zone
   */
-  String inString = myPort.readStringUntil('\n');
-  if (inString != null)
+  
+  inString = myPort.readStringUntil('\n');
+  
+  if (inString != null)  // if I receive something
   {
-    inString = trim(inString);
-    value = float(inString);
+    inString = trim(inString);    
+    value[zoneIndex] = float(inString);
+    angleValue[zoneIndex] = value[zoneIndex] * PI / 100;
   }
+
+  /*
+  * Fill the selected zone
+  */
+  zones[zoneIndex].filling(angleValue[zoneIndex]); 
+    
+  /*
+  * Go for next zone when filling is over
+  */  
+  if (zones[zoneIndex].angleMid == angleValue[zoneIndex] && angleValue[zoneIndex] > 0)
+  {
+    zoneIndex ++;
+  }
+  
+  viewtwoRun ++;
 }

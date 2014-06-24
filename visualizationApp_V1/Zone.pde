@@ -7,22 +7,28 @@ class Zone
   int dExtern;
   int dIntern;
   int rgb;
+  float angleStart;
+  float angleMid;
+  float angleEnd;
   
   // Constructor to set initial values
   Zone(float x, float y) 
   {
     xpos = x;
     ypos = y;
-    dExtern = width/10;
-    dIntern = 3*dExtern/4;
     rgb = 122;
+    
+    // Part ext
+    dExtern = width/10;
+    
+    // Part Int
+    dIntern = 3*dExtern/4;
+    
+    // arc
+    angleStart = 0;
+    angleMid = 0; 
+    angleEnd = 0;
   }
-  
-//  // Update fields
-//  void update() {
-//    angleMid += speed;
-//    angleMid = constrain(angleMid, 0, angleEnd);
-//  }  
   
   // Draw the zone
   void display() 
@@ -30,7 +36,6 @@ class Zone
     fill(255);
     strokeWeight(1);    
     stroke(rgb);
-
     
     ellipse(xpos, ypos, dExtern, dExtern);
     ellipse(xpos, ypos, dIntern, dIntern);
@@ -47,8 +52,22 @@ class Zone
     ellipse(xpos, ypos, dIntern, dIntern);
   }
   
-  void filling(int angleEnd)
-  {
-  
+  void filling(float angleCopy)
+  { 
+    angleEnd = angleCopy;
+    angleMid += 0.05;
+    angleMid = constrain(angleMid, angleStart, angleEnd); 
+    
+    fill(255);
+    strokeWeight(4);
+    stroke(0, 255, 10);
+
+    ellipse(xpos, ypos, dExtern, dExtern);
+    
+    fill(155);
+    arc(xpos, ypos, dExtern, dExtern, angleStart - PI/2, angleMid - PI/2);    
+    
+    fill(255);
+    ellipse(xpos, ypos, dIntern, dIntern);
   }
 }
