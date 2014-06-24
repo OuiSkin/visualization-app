@@ -1,24 +1,12 @@
 void viewTwo()
 {
-  
+  background(255);
   // Draw 
 
-  zone1.angleEnd = 3;
-  zone1.update();
-  zone1.display();  
+  zones[0].display();
   
   /*
   * Receives
   */
 
-  String inString = myPort.readStringUntil('\n');    // get the ASCII string
-  if (inString != null)   // check if there is something
-  {
-    // trim off any whitespace
-    inString = trim(inString);
-    // convert to an float
-    absValue[in
-  
-  
-  // Update
 }

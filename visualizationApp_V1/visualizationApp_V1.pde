@@ -6,13 +6,13 @@
  *  @author Benoit Cotte
  */
 
+
 import processing.serial.*;
 
-// The serial port
 Serial myPort;
 
-Zone zone1;
-
+Zone[] zones;
+int clickCounter;
 
 void setup ()
 {
@@ -20,10 +20,29 @@ void setup ()
   *  Deal with the Serial connection
   */
   
-  println(Serial.list());    // List all the available serial ports:
-  myPort = new Serial(this, Serial.list()[5], 9600);   
-  myPort.clear();  // clear buffer if any remaining values
+//  println(Serial.list());    // List all the available serial ports:
+//  myPort = new Serial(this, Serial.list()[5], 9600);   
+//  myPort.clear();  // clear buffer if any remaining values
   
+  /*
+  *  Instantiate the zones
+  */
+  
+  zones = new Zone[6];
+  zones[0] = new Zone(width/2, height/5);
+  zones[1] = new Zone(width/5, 3*height/5);
+  zones[2] = new Zone(2*width/5, 2*height/5);
+  zones[3] = new Zone(3*width/5, 2*height/5);
+  zones[4] = new Zone(4*height/5, 3*height/5);
+  zones[5] = new Zone(width/2, 4*height/5);
+  
+  
+  /*
+  *  Initialize the variables
+  */
+  
+  clickCounter = 0;
+
   /*
   *  Setup characteristics
   */
@@ -37,23 +56,30 @@ void setup ()
   stroke(255);
   
   smooth();
-  
-  /*
-  *  Instantiate the zones
-  */
-  zone1 = new Zone("Zone 1", 1);
-
-  
 }
 
 void draw ()
 {
-  background(80);
+  if (clickCounter == 0)
+    viewOne();
   
-  viewTwo();
+  else if (clickCounter == 1)
+    viewTwo();
+  
+  else
+    viewThree();
   
 }
 
+void mousePressed()
+{
+  if (mousePressed && (mouseButton == LEFT))
+    clickCounter += 1;
+   
+  else if (mousePressed && (mouseButton == RIGHT))
+    clickCounter -= 1;
+
+}
 
 
 

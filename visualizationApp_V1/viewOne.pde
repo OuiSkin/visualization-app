@@ -1,4 +1,5 @@
 void viewOne()
 {
-    text("Hello, World ", width/2, height/2);
+  background(255);
+  text("Hey guys", width/2, height/2);
 }
