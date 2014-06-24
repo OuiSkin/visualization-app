@@ -9,10 +9,13 @@
 
 import processing.serial.*;
 
+
+
 Serial myPort;
 
 Zone[] zones;
 int clickCounter;
+float value;
 
 void setup ()
 {
@@ -20,9 +23,9 @@ void setup ()
   *  Deal with the Serial connection
   */
   
-//  println(Serial.list());    // List all the available serial ports:
-//  myPort = new Serial(this, Serial.list()[5], 9600);   
-//  myPort.clear();  // clear buffer if any remaining values
+  println(Serial.list());    // List all the available serial ports:
+  myPort = new Serial(this, Serial.list()[5], 9600);   
+  myPort.clear();  // clear buffer if any remaining values
 
   /*
   *  Setup characteristics
@@ -48,6 +51,7 @@ void setup ()
   */
   
   clickCounter = 0;
+  value = 0;
 
 }
 

@@ -41,11 +41,14 @@ class Zone
   {
     fill(255);
     strokeWeight(4);
-    stroke(0, 255, 0);
+    stroke(0, 255, 10);
 
     ellipse(xpos, ypos, dExtern, dExtern);
     ellipse(xpos, ypos, dIntern, dIntern);
   }
   
-
+  void filling(int angleEnd)
+  {
+  
+  }
 }
