@@ -23,7 +23,13 @@ void setup ()
 //  println(Serial.list());    // List all the available serial ports:
 //  myPort = new Serial(this, Serial.list()[5], 9600);   
 //  myPort.clear();  // clear buffer if any remaining values
+
+  /*
+  *  Setup characteristics
+  */
   
+  size(800, 800);  // dim of the window
+      
   /*
   *  Instantiate the zones
   */
@@ -43,19 +49,6 @@ void setup ()
   
   clickCounter = 0;
 
-  /*
-  *  Setup characteristics
-  */
-  
-  size(1200, 800);  // dim of the window
-
-  background(255);  // set inital background color
-  
-  fill(52, 142, 246);  // default fill
-  
-  stroke(255);
-  
-  smooth();
 }
 
 void draw ()

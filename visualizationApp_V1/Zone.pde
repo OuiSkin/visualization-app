@@ -1,16 +1,21 @@
-class Zone {
+class Zone 
+{
 
   // Declare variables
-  float x;
-  float y;
-  int d;
+  float xpos;
+  float ypos;
+  int dExtern;
+  int dIntern;
+  int rgb;
   
   // Constructor to set initial values
-  Zone(float xpos, float ypos) 
+  Zone(float x, float y) 
   {
-    x = xpos;
-    y = ypos;
-    d = 50;
+    xpos = x;
+    ypos = y;
+    dExtern = width/10;
+    dIntern = 3*dExtern/4;
+    rgb = 122;
   }
   
 //  // Update fields
@@ -19,10 +24,28 @@ class Zone {
 //    angleMid = constrain(angleMid, 0, angleEnd);
 //  }  
   
-  // Draw the arc
+  // Draw the zone
   void display() 
-  {
-    ellipse(x, y, d, d);
-    fill(0);
+  { 
+    fill(255);
+    strokeWeight(1);    
+    stroke(rgb);
+
+    
+    ellipse(xpos, ypos, dExtern, dExtern);
+    ellipse(xpos, ypos, dIntern, dIntern);
   }
+  
+  // Make the zone green
+  void select()
+  {
+    fill(255);
+    strokeWeight(4);
+    stroke(0, 255, 0);
+
+    ellipse(xpos, ypos, dExtern, dExtern);
+    ellipse(xpos, ypos, dIntern, dIntern);
+  }
+  
+
 }
