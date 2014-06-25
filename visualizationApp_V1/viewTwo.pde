@@ -1,10 +1,12 @@
 void viewTwo()
 {
+  curView = 2;
+
   /*
-  * Display empty zones
+  * Display zones
   */
   if (viewtwoRun == 0)
-  {
+  {    
     background(255);
     zones[0].display();
     zones[1].display();
@@ -42,6 +44,7 @@ void viewTwo()
     inString = trim(inString);    
     value[zoneIndex] = float(inString);
     angleValue[zoneIndex] = value[zoneIndex] * PI / 100;
+    inStringCount += 1;
   }
 
   /*
@@ -52,10 +55,10 @@ void viewTwo()
   /*
   * Go for next zone when filling is over
   */  
-  if (zones[zoneIndex].angleMid == angleValue[zoneIndex] && angleValue[zoneIndex] > 0)
-  {
-    zoneIndex ++;
+  if (zones[zoneIndex].angleMid == angleValue[zoneIndex] && angleValue[zoneIndex] != 0)
+  {  
+      zoneIndex = (zoneIndex + 1)%6;
   }
-  
+
   viewtwoRun ++;
 }

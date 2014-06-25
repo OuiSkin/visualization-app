@@ -18,10 +18,13 @@ int zoneIndex;
 int clickCounter;
 float[] value = new float[6];
 float[] angleValue = new float[6];
+int curView;
+int inStringCount;
 
 String inString;
 int viewtwoRun;
 PImage logo;
+
 
 void setup ()
 {
@@ -59,8 +62,9 @@ void setup ()
   clickCounter = 0;
   zoneIndex = 0;
   inString = null;
-  int viewtwoRun =0;
   logo = loadImage("logo.gif");
+  curView = 0;
+  inStringCount = 0;
 
 }
 
@@ -72,21 +76,58 @@ void draw ()
   else if (clickCounter == 1)
     viewTwo();
   
-  else
+  else if (clickCounter == 2)
     viewThree();
   
 }
 
 void mousePressed()
 {
-  if (mousePressed && (mouseButton == LEFT))
-    clickCounter += 1;
+  
+  if (mousePressed && (mouseButton == RIGHT))
+  {
+    clickCounter = (clickCounter - 1)%3;
+    review();
+  }
    
-  else if (mousePressed && (mouseButton == RIGHT))
-    clickCounter -= 1;
+  else if (mousePressed && (mouseButton == LEFT))
+  {
+    clickCounter = (clickCounter + 1)%3;
+    if (curView == 1)
+      reset();
+  }
 
 }
 
+void keyPressed()
+{
+  if(keyCode == ENTER)
+    reset();
+}
 
+/*
+*  Reset zone values
+*/
+void reset()
+{
+ for(int i = 0; i < 6; i ++)
+    {
+      value[i] = 0;
+      angleValue[i] = 0;
+    }
+  zoneIndex = 0;
+  viewtwoRun = 0;  // reinitializes if go back to view2 
+}
 
-
+/*
+*  Review zone values
+*/
+void review()
+{
+  background(255);
+  for(int i = 0; i < 6; i ++)
+  {
+    zones[i].display();
+    zones[i].filling(angleValue[i]);
+  }
+}
