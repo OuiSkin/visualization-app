@@ -1,11 +1,31 @@
 void viewOne()
 {
   curView = 1;
-  fill(0);
-  background(255);
   
-  imageMode(CENTER);
-  image(logo, width/2, 4*height/5);
+  background(255);  // to have nice text
+  /*
+  * For H2
+  */
+  textAlign(CENTER, CENTER);
+  textFont(H1, width/25);
+  fill(palette[0]);
+  String H2 = "Ouiskin aims at enhancing your cosmetics routine";
+  text(H2, width/2, height/12);
   
-  text("Hey guys", width/2, height/2);
+  textAlign(CENTER, CENTER);
+  textFont(H1, width/20);
+  fill(palette[0]);
+  text("MEASURE YOUR SKIN HYDRATION LEVEL", width/2, 5*height/12);
+  text("with hexa", width/2, 6*height/12);
+
+  
+  strokeWeight(4);
+  stroke(palette[0]);
+  line(width/8, 4*height/12, 7*width/8, 4*height/12);
+  line(width/8, 7*height/12, 7*width/8, 7*height/12);
+  /*
+  * For img
+  */ 
+  image(click, width/2, 10*height/12);
+
 }

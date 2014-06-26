@@ -64,7 +64,7 @@ class Zone
 
     ellipse(xpos, ypos, dExtern, dExtern);
     
-    fill(155);
+    fill(palette[1]);
     arc(xpos, ypos, dExtern, dExtern, angleStart - PI/2, angleMid - PI/2);    
     
     fill(255);

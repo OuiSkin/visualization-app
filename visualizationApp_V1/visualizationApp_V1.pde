@@ -23,7 +23,16 @@ int inStringCount;
 
 String inString;
 int viewtwoRun;
+
+/*
+*  Graphic elements
+*/
 PImage logo;
+PImage click;
+color[] ouiskin = {#555555, #4291FF, #1AAA6A, #DD4234};
+color[] palette = ouiskin;
+PFont H1;
+
 
 
 void setup ()
@@ -33,8 +42,8 @@ void setup ()
   */
   
   println(Serial.list());    // List all the available serial ports:
-  myPort = new Serial(this, Serial.list()[5], 9600);   
-  myPort.clear();  // clear buffer if any remaining values
+//  myPort = new Serial(this, Serial.list()[5], 9600);   
+//  myPort.clear();  // clear buffer if any remaining values
 
   /*
   *  Setup characteristics
@@ -62,10 +71,18 @@ void setup ()
   clickCounter = 0;
   zoneIndex = 0;
   inString = null;
-  logo = loadImage("logo.gif");
   curView = 0;
   inStringCount = 0;
-
+  
+  /*
+  *  Initialize the graph components
+  */  
+  logo = loadImage("logo.gif");
+  H1 = createFont("OpenSans-Light.ttf", 16, true);
+//  face = loadImage("faceClean.png");
+  click = loadImage("clicktoContinue.png");
+  
+  
 }
 
 void draw ()

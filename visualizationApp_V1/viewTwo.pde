@@ -37,7 +37,7 @@ void viewTwo()
   * Receives data of selected zone
   */
   
-  inString = myPort.readStringUntil('\n');
+//  inString = myPort.readStringUntil('\n');
   
   if (inString != null)  // if I receive something
   {
