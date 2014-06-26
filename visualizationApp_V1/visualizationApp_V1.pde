@@ -30,7 +30,7 @@ String inString;
 PImage logo;
 PImage click;
 PImage face;
-color[] ouiskin = {#555555, #3DBDEB, #3DBDEB, #1AAA6A, #DD4234};
+color[] ouiskin = {#555555, #3DBDEB, #1AAA6A, #DD4234};
 color[] palette = ouiskin;
 PFont H1;
 
@@ -129,6 +129,7 @@ void mousePressed()
       {    
         zones[i].reset(i);
       }
+      zoneIndex = 0;
     }
   }
 
@@ -136,7 +137,7 @@ void mousePressed()
 
 void keyPressed()
 {
-  if(keyCode == ENTER)
+  if(keyCode == ENTER)  // Reset all
   {
     for (int i = 0; i < 6; i ++)
     {    
@@ -144,10 +145,15 @@ void keyPressed()
       zoneIndex = 0;
     }
   }
-  if(keyCode == LEFT)
+  if(keyCode == LEFT)  // Reset previous
   {
-    zones[zoneIndex - 1].reset(zoneIndex - 1);
-    zoneIndex -= 1;
+    if(zoneIndex != 0)
+    {
+      zones[zoneIndex - 1].reset(zoneIndex - 1);
+      zoneIndex -= 1;
+    }
+    else
+      zones[0].reset(0);
   }
 }
 

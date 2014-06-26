@@ -3,14 +3,14 @@ void viewOne()
   curView = 1;
   
   background(255);  // to have nice text
+  
   /*
-  * For H2
+  * For Text
   */
   textAlign(CENTER, CENTER);
   textFont(H1, width/25);
   fill(palette[0]);
-  String H2 = "Ouiskin aims at enhancing your cosmetics routine";
-  text(H2, width/2, height/12);
+  text("Ouiskin aims at enhancing your cosmetics routine", width/2, height/12);
   
   textAlign(CENTER, CENTER);
   textFont(H1, width/20);
@@ -23,6 +23,7 @@ void viewOne()
   stroke(palette[0]);
   line(width/8, 4*height/12, 7*width/8, 4*height/12);
   line(width/8, 7*height/12, 7*width/8, 7*height/12);
+  
   /*
   * For img
   */ 

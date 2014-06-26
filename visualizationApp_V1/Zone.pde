@@ -65,7 +65,7 @@ class Zone
 
     ellipse(xpos, ypos, dExtern, dExtern);
     
-    fill(palette[2]);
+    fill(palette[1]);
     arc(xpos, ypos, dExtern, dExtern, angleStart - PI/2, angleMid - PI/2);    
     
     fill(255);
@@ -74,10 +74,10 @@ class Zone
   
   void filled(float angleEnd)
   { 
-
+    fill(255);
     ellipse(xpos, ypos, dExtern, dExtern);
     
-    fill(palette[2]);
+    fill(palette[1]);
     arc(xpos, ypos, dExtern, dExtern, angleStart - PI/2, angleEnd - PI/2);    
     
     fill(255);
