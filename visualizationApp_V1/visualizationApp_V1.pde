@@ -14,6 +14,7 @@ import processing.serial.*;
 Serial myPort;
 
 Zone[] zones;
+AvgZone avg;
 int z0Xpos, z0Ypos, z1Xpos, z1Ypos, z2Xpos, z2Ypos, z3Xpos, z3Ypos, z4Xpos, z4Ypos, z5Xpos, z5Ypos;
 int zoneIndex;
 int clickCounter;
@@ -21,8 +22,15 @@ float[] value = new float[6];
 float[] angleValue = new float[6];
 int curView;
 int inStringCount;
+float sum;
+float sumAngle;
+int nbMeasure;
+float avgMeasure;
+float avgAngle;
+
 
 String inString;
+String strAvgMeasure;
 
 /*
 *  Graphic elements
@@ -76,6 +84,8 @@ void setup ()
   zones[4] = new Zone(z4Xpos, z4Ypos);
   zones[5] = new Zone(z5Xpos, z5Ypos);
   
+  avg = new AvgZone(width/2, height/3);
+  
   
   /*
   *  Initialize the variables
@@ -86,6 +96,7 @@ void setup ()
   inString = null;
   curView = 0;
   inStringCount = 0;
+  avgMeasure = 0;
   
   /*
   *  Initialize the graph components
@@ -94,7 +105,6 @@ void setup ()
   H1 = createFont("OpenSans-Light.ttf", 16, true);
   click = loadImage("clicktoContinue.png");
   face = loadImage("faceClean800.png");
-  
   
 }
 

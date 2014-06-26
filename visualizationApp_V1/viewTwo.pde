@@ -22,9 +22,11 @@ void viewTwo()
   image(face, width/2, height/3);
   
   /*
-  * Display zones
+  * Display zones && prepare for avreage on view 3
   */
-
+  nbMeasure = 0;
+  sum = 0;
+  sumAngle = 0;
   for(int i = 0; i < 6; i++)
   {
     if (angleValue[i] == 0)
@@ -32,8 +34,17 @@ void viewTwo()
     else
     {
       zones[i].filled(angleValue[i]);
-      zones[i].valueDisplay(value[i]); 
+      zones[i].valueDisplay(value[i]);
+      nbMeasure += 1; 
+      sum += value[i];
+      sumAngle += angleValue[i];
     }
+  }
+  
+  if (nbMeasure == 6)
+  {
+    imageMode(CORNER);
+    image(click, width/2, 10*height/12);
   }
 
   
@@ -42,16 +53,6 @@ void viewTwo()
   */  
   
   zones[zoneIndex].select();
-  
-//  /*
-//  * Key control
-//  */  
-//  
-//  if(keyPressed == true)
-//  {
-//    zoneIndex = (zoneIndex+1)%6;
-//    keyPressed = false;
-//  }
 
 
   /*
@@ -87,4 +88,5 @@ void viewTwo()
   {  
       zoneIndex = (zoneIndex + 1)%6;
   }
+  
 }

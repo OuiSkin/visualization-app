@@ -27,6 +27,7 @@ void viewOne()
   /*
   * For img
   */ 
+  imageMode(CORNER);
   image(click, width/2, 10*height/12);
 
 }

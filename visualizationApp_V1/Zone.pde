@@ -60,9 +60,12 @@ class Zone
   void filling(float angleCopy)
   { 
     angleEnd = angleCopy;
-    angleMid += 0.05;
+    angleMid += 0.1;
     angleMid = constrain(angleMid, angleStart, angleEnd); 
-
+    
+    strokeWeight(width/400);
+    stroke(palette[1]);
+    
     ellipse(xpos, ypos, dExtern, dExtern);
     
     fill(palette[1]);
@@ -75,6 +78,10 @@ class Zone
   void filled(float angleEnd)
   { 
     fill(255);
+    
+    strokeWeight(width/400);
+    stroke(palette[1]);
+    
     ellipse(xpos, ypos, dExtern, dExtern);
     
     fill(palette[1]);
@@ -107,5 +114,4 @@ class Zone
     textBig = 40;
     textMid = 40;
     textNormal = 16;
-  }
-}
+  }}
