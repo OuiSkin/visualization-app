@@ -1,34 +1,58 @@
 void viewTwo()
 {
+  curView = 2;
+  background(255);  // to have nice text
+  
   /*
-  * Display empty zones
+  * Display text
+  */  
+  
+  textAlign(LEFT, TOP);
+  textFont(H1, width/50);
+  fill(palette[0]);
+  text("LOCAL MEASURES", width/100, 10*height/800);
+
+  
+  strokeWeight(width/400);
+  stroke(palette[0]);
+  line(width/200, height/200, 36*width/200, height/200);
+  line(width/200, 10*height/200, 36*width/200, 10*height/200);
+
+  imageMode(CENTER);
+  image(face, width/2, height/3);
+  
+  /*
+  * Display zones && prepare for avreage on view 3
   */
-  if (viewtwoRun == 0)
+  nbMeasure = 0;
+  sum = 0;
+  sumAngle = 0;
+  for(int i = 0; i < 6; i++)
   {
-    background(255);
-    zones[0].display();
-    zones[1].display();
-    zones[2].display();
-    zones[3].display();
-    zones[4].display();
-    zones[5].display();
+    if (angleValue[i] == 0)
+      zones[i].display();
+    else
+    {
+      zones[i].filled(angleValue[i]);
+      zones[i].valueDisplay(value[i]);
+      nbMeasure += 1; 
+      sum += value[i];
+      sumAngle += angleValue[i];
+    }
   }
+  
+  if (nbMeasure == 6)
+  {
+    imageMode(CORNER);
+    image(click, width/2, 10*height/12);
+  }
+
   
   /*
   * Select the zone
   */  
   
   zones[zoneIndex].select();
-  
-//  /*
-//  * Key control
-//  */  
-//  
-//  if(keyPressed == true)
-//  {
-//    zoneIndex = (zoneIndex+1)%6;
-//    keyPressed = false;
-//  }
 
 
   /*
@@ -41,21 +65,28 @@ void viewTwo()
   {
     inString = trim(inString);    
     value[zoneIndex] = float(inString);
-    angleValue[zoneIndex] = value[zoneIndex] * PI / 100;
+    angleValue[zoneIndex] = value[zoneIndex] * 2 * PI / 100;
+    inStringCount += 1;
   }
 
   /*
   * Fill the selected zone
   */
-  zones[zoneIndex].filling(angleValue[zoneIndex]); 
+   
+  
+  if (value[zoneIndex] > 0)
+  {
+    zones[zoneIndex].filling(angleValue[zoneIndex]); 
+    zones[zoneIndex].valueDisplay(value[zoneIndex]); 
+  }
+
     
   /*
   * Go for next zone when filling is over
   */  
-  if (zones[zoneIndex].angleMid == angleValue[zoneIndex] && angleValue[zoneIndex] > 0)
-  {
-    zoneIndex ++;
+  if (zones[zoneIndex].angleMid == angleValue[zoneIndex] && angleValue[zoneIndex] != 0)
+  {  
+      zoneIndex = (zoneIndex + 1)%6;
   }
   
-  viewtwoRun ++;
 }
