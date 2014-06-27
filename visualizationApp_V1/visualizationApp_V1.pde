@@ -27,6 +27,7 @@ float sumAngle;
 int nbMeasure;
 float avgMeasure;
 float avgAngle;
+int saveFrame;
 
 
 String inString;
@@ -51,7 +52,7 @@ void setup ()
   */
   
   println(Serial.list());    // List all the available serial ports:
-  myPort = new Serial(this, Serial.list()[5], 9600);   
+  myPort = new Serial(this, Serial.list()[6], 9600);   
   myPort.clear();  // clear buffer if any remaining values
 
   /*
@@ -97,6 +98,7 @@ void setup ()
   curView = 0;
   inStringCount = 0;
   avgMeasure = 0;
+  saveFrame = 0;
   
   /*
   *  Initialize the graph components
@@ -105,6 +107,7 @@ void setup ()
   H1 = createFont("OpenSans-Light.ttf", 16, true);
   click = loadImage("clicktoContinue.png");
   face = loadImage("faceClean800.png");
+  
   
 }
 

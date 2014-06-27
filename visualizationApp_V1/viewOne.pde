@@ -10,7 +10,7 @@ void viewOne()
   textAlign(CENTER, CENTER);
   textFont(H1, width/25);
   fill(palette[0]);
-  text("Ouiskin aims at enhancing your cosmetics routine", width/2, height/12);
+  text("OuiSkin aims at enhancing your cosmetics routine", width/2, height/12);
   
   textAlign(CENTER, CENTER);
   textFont(H1, width/20);
