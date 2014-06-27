@@ -52,7 +52,7 @@ void setup ()
   */
   
   println(Serial.list());    // List all the available serial ports:
-  myPort = new Serial(this, Serial.list()[6], 9600);   
+  myPort = new Serial(this, Serial.list()[5], 9600);   
   myPort.clear();  // clear buffer if any remaining values
 
   /*

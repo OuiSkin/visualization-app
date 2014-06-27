@@ -22,7 +22,7 @@ void viewTwo()
   image(face, width/2, height/3);
   
   /*
-  * Display zones && prepare for avreage on view 3
+  * Display zones && prepare for average on view 3
   */
   nbMeasure = 0;
   sum = 0;
