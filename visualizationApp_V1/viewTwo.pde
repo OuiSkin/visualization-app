@@ -3,6 +3,9 @@ void viewTwo()
   curView = 2;
   background(255);  // to have nice text
   
+  imageMode(CENTER);
+  image(face, width/2, height/3);
+  
   /*
   * Display text
   */  
@@ -11,15 +14,17 @@ void viewTwo()
   textFont(H1, width/50);
   fill(palette[0]);
   text("LOCAL MEASURES", width/100, 10*height/800);
-
+  text("GLOBAL MEASURES", width/200, 10*height/12);
   
   strokeWeight(width/400);
   stroke(palette[0]);
   line(width/200, height/200, 36*width/200, height/200);
   line(width/200, 10*height/200, 36*width/200, 10*height/200);
+  line(width/200, 165*height/200, 36*width/200, 165*height/200);
+  line(width/200, 190*height/200, 36*width/200, 190*height/200);
+  
 
-  imageMode(CENTER);
-  image(face, width/2, height/3);
+
   
   /*
   * Display zones && prepare for average on view 3
@@ -38,6 +43,14 @@ void viewTwo()
       nbMeasure += 1; 
       sum += value[i];
       sumAngle += angleValue[i];
+      avgMeasure = 0;
+      avgAngle = 0;
+      avgMeasure = sum/nbMeasure;
+      avgAngle = sumAngle/nbMeasure;
+
+      avg.filling(avgAngle);
+      avg.valueDisplay(avgMeasure);
+
     }
   }
   

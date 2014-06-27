@@ -14,7 +14,7 @@ import processing.serial.*;
 Serial myPort;
 
 Zone[] zones;
-AvgZone avg;
+Zone avg;
 int z0Xpos, z0Ypos, z1Xpos, z1Ypos, z2Xpos, z2Ypos, z3Xpos, z3Ypos, z4Xpos, z4Ypos, z5Xpos, z5Ypos;
 int zoneIndex;
 int clickCounter;
@@ -85,7 +85,7 @@ void setup ()
   zones[4] = new Zone(z4Xpos, z4Ypos);
   zones[5] = new Zone(z5Xpos, z5Ypos);
   
-  avg = new AvgZone(width/2, height/3);
+  avg = new Zone(width/12, 10*height/12);
   
   
   /*
