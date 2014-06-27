@@ -9,8 +9,6 @@
 
 import processing.serial.*;
 
-
-
 Serial myPort;
 
 Zone[] zones;
@@ -42,11 +40,12 @@ PImage face;
 color[] ouiskin = {#555555, #3DBDEB, #1AAA6A, #DD4234};
 color[] palette = ouiskin;
 PFont H1;
-
+int debug;
 
 
 void setup ()
 {
+  debug = 0;
   /*
   *  Deal with the Serial connection
   */
@@ -85,7 +84,7 @@ void setup ()
   zones[4] = new Zone(z4Xpos, z4Ypos);
   zones[5] = new Zone(z5Xpos, z5Ypos);
   
-  avg = new Zone(width/12, 10*height/12);
+  avg = new Zone(width/12, 180*height/200);
   
   
   /*

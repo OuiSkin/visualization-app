@@ -1,5 +1,7 @@
 void viewTwo()
 {
+//  debug+=1;
+//  println(debug);
   curView = 2;
   background(255);  // to have nice text
   
@@ -14,17 +16,14 @@ void viewTwo()
   textFont(H1, width/50);
   fill(palette[0]);
   text("LOCAL MEASURES", width/100, 10*height/800);
-  text("GLOBAL MEASURES", width/200, 10*height/12);
+  text("AVERAGE", 10*width/200, 158*height/200);
   
   strokeWeight(width/400);
   stroke(palette[0]);
   line(width/200, height/200, 36*width/200, height/200);
   line(width/200, 10*height/200, 36*width/200, 10*height/200);
-  line(width/200, 165*height/200, 36*width/200, 165*height/200);
-  line(width/200, 190*height/200, 36*width/200, 190*height/200);
-  
-
-
+  line(width/200, 156*height/200, 36*width/200, 156*height/200);
+  line(width/200, 166*height/200, 36*width/200, 166*height/200);
   
   /*
   * Display zones && prepare for average on view 3
@@ -43,14 +42,10 @@ void viewTwo()
       nbMeasure += 1; 
       sum += value[i];
       sumAngle += angleValue[i];
-      avgMeasure = 0;
-      avgAngle = 0;
       avgMeasure = sum/nbMeasure;
       avgAngle = sumAngle/nbMeasure;
-
-      avg.filling(avgAngle);
-      avg.valueDisplay(avgMeasure);
-
+      avg.filled(avgAngle);
+      avg.valueDisplay(int(avgMeasure));
     }
   }
   
@@ -79,13 +74,13 @@ void viewTwo()
   */
   
   inString = myPort.readStringUntil('\n');
-  
   if (inString != null)  // if I receive something
   {
     inString = trim(inString);    
     value[zoneIndex] = float(inString);
     angleValue[zoneIndex] = value[zoneIndex] * 2 * PI / 100;
     inStringCount += 1;
+    println(inString);
   }
 
   /*
