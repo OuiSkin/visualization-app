@@ -51,7 +51,7 @@ void setup ()
   */
   
   println(Serial.list());    // List all the available serial ports:
-  myPort = new Serial(this, Serial.list()[5], 9600);   
+  myPort = new Serial(this, Serial.list()[6], 9600);   
   myPort.clear();  // clear buffer if any remaining values
 
   /*
@@ -184,4 +184,26 @@ void review()
     zones[i].display();
     zones[i].filling(angleValue[i]);
   }
+}
+
+void saveReport()
+{
+  int s = second();  // Values from 0 - 59
+  int m = minute();  // Values from 0 - 59
+  int h = hour();    // Values from 0 - 23
+  int d = day();
+  String strS = str(s);
+  String strM = str(m);
+  String strH = str(h);
+  String strD = str(d);
+  String timeStamp = strD;
+  timeStamp += "-";
+  timeStamp += strH;
+  timeStamp += "-";
+  timeStamp += strM;
+  timeStamp += "-";
+  timeStamp += strS;
+  timeStamp += "-";
+  timeStamp += "report.png";
+  saveFrame(timeStamp);
 }

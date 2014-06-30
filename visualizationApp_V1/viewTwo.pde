@@ -56,7 +56,7 @@ void viewTwo()
     
     if (saveFrame == 0)
     {
-      saveFrame("report.png");
+      saveReport();
       saveFrame += 1;
     }
   }
