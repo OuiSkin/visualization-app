@@ -54,7 +54,7 @@ void viewTwo()
     imageMode(CORNER);
     image(click, width/2, 10*height/12);
     
-    if (saveFrame == 0 && textMid == textNormal)
+    if (saveFrame == 0 && zones[5].textMid == zones[5].textNormal)
     {
       saveReport();
       saveFrame += 1;
