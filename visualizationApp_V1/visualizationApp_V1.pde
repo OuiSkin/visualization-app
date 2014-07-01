@@ -51,9 +51,14 @@ void setup ()
   */
   
   println(Serial.list());    // List all the available serial ports:
-  myPort = new Serial(this, Serial.list()[6], 9600);   
+  
+  for(int i = 0; i < Serial.list().length; i++)
+  {
+    if (Serial.list()[i].equals("/dev/tty.HC-06-DevB"))
+      myPort = new Serial(this, Serial.list()[i], 9600);  
+  }
+   
   myPort.clear();  // clear buffer if any remaining values
-
   /*
   *  Setup characteristics
   */
@@ -104,7 +109,7 @@ void setup ()
   */  
   logo = loadImage("logo.gif");
   H1 = createFont("OpenSans-Light.ttf", 16, true);
-  click = loadImage("clicktoContinue.png");
+  click = loadImage("clicktoContinue2.png");
   face = loadImage("faceClean800.png");
   
   
