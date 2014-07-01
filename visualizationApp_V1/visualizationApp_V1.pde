@@ -54,7 +54,7 @@ void setup ()
   
   for(int i = 0; i < Serial.list().length; i++)
   {
-    if (Serial.list()[i].equals("/dev/tty.HC-06-DevB"))
+    if (Serial.list()[i].equals("/dev/tty.HC-06-DevB-1"))
       myPort = new Serial(this, Serial.list()[i], 9600);  
   }
    
